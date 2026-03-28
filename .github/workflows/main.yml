@@ -33,7 +33,8 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Grant execute permission to gradlew
-        run: chmod +x app/gradlew
+        run: chmod +x gradlew
+        working-directory: app
 
       - name: Run Cucumber UI Tests
         continue-on-error: true
