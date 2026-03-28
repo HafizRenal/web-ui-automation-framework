@@ -34,12 +34,10 @@ jobs:
 
       - name: Grant execute permission to gradlew
         run: chmod +x gradlew
-        working-directory: app
 
       - name: Run Cucumber UI Tests
         continue-on-error: true
-        working-directory: app
-        run: ./gradlew test
+        run: ./gradlew :app:test
 
       - name: Upload Cucumber HTML Report
         if: always()
