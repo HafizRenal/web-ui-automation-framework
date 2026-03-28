@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.ui.pages.LoginPage;
 
 import static org.junit.Assert.assertTrue;
@@ -26,7 +27,15 @@ public class LoginSteps {
     @Before
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        driver    = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+
+        driver    = new ChromeDriver(options);
         loginPage = new LoginPage(driver);
         driver.manage().window().maximize();
     }
